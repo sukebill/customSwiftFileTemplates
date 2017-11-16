@@ -27,22 +27,22 @@ public class RequestManager {
     static let shared = RequestManager()
     private init() {}
     
-    //example request
-    func getSettings(_ requestAftermath: RequestAftermath<Settings>? = nil) {
-        let urlString = baseUrl + "settings"
-        Alamofire.request(urlString, method: .get)
-            .validate()
-            .responseJSON{ response in
-                switch response.result {
-                case .success:
-                    let settings = Settings.jsonToDecoder(response.result.value as! NSDictionary) as? Settings
-                    requestAftermath?(settings, nil)
-                    
-                case .failure(_):
-                    requestAftermath?(nil, response.apiError)
-                }
-        }
-    }
+    //example request, (Settings is a struct: Decodable)
+//    func getSettings(_ requestAftermath: RequestAftermath<Settings>? = nil) {
+//        let urlString = baseUrl + "settings"
+//        Alamofire.request(urlString, method: .get)
+//            .validate()
+//            .responseJSON{ response in
+//                switch response.result {
+//                case .success:
+//                    let settings = Settings.jsonToDecoder(response.result.value as! NSDictionary) as? Settings
+//                    requestAftermath?(settings, nil)
+//
+//                case .failure(_):
+//                    requestAftermath?(nil, response.apiError)
+//                }
+//        }
+//    }
 }
 
 extension DataResponse {
